@@ -121,10 +121,10 @@ h1 {font-size: 24px;color: royalblue;}
 ### Template literal syntax
 ```js
 const button = css`
-  button {
+  ${css(button {
     background: black;
     color: white;
-  }
+  })}
 `;
 ```
 
@@ -136,7 +136,7 @@ Render and write files easily (helpers create directories automatically):
 
 ```js
 html.file(page, { title: "Home" }, {}, "./dist/index.html");
-css.file(() => ({ body: { color: "red" } }), {}, {}, "./dist/style.css");
+css.file(style, {}, {}, "./dist/style.css");
 ```
 
 ---
@@ -164,13 +164,13 @@ console.log(html.render(Button, { label: "Click Me", color: "royalblue" }));
 
 Examples:
 ```js
-css.inline(() => ({ color: "red" }));
+css.inline(() => (css`${css({ color: "red" })}`));
 // => 'style="color:red;"'
 
-css.inner(() => ({ body: { background: "white" } }));
+css.inner(() => (css`${css({ body: { background: "white" })}` }));
 // => '<style>body {background:white;}</style>'
 
-css.module(() => ({ background: "black" }));
+css.module(() => (css`${css({ background: "black" })}`));
 // => { className: "cxxxxxx", style: "<style>.cxxxxxx{background:black}</style>" }
 ```
 
