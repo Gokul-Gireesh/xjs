@@ -36,31 +36,10 @@ function html(strings, ...values) {
     }, "");
     html.useContext = reserve;
     return string;
-  } : (typeof strings === "object" || typeof strings === "function") ? (rendered) => {
-    const node = typeof strings === "function" ? strings() : strings;
-    let inner = "";
-    
-    for (const [tag, content] of Object.entries(node)) {
-      if (tag === ".") {
-        continue;
-      } else if (typeof content === "string") {
-        inner += `<${tag}>${html.escape(content)}</${tag}>`;
-      } else {
-        const child = html(content);
-        const attrs = child.attrs();
-        inner += `<${tag}${attrs ? " " + attrs : ""}>${child(inner)}</${tag}>`;
-      }
-    }
-    
-    return inner;
   } : (rendered) => {
     return strings;
   }
-  object.attrs = () => {
-    const content = strings["."];
-    if(content == null) return undefined;
-    else return typeof content === "object" ? Object.entries(content).map(([key, value]) => `${html.escape(key)}="${html.escape(value ?? "")}"`).join(" ") : typeof content === "string" ? `class="${html.escape(content ?? "")}"` : undefined;
-  }
+  
   return object;
 }
 html.escape = (string) => {
@@ -73,11 +52,11 @@ html.escape = (string) => {
 }
 html.unescape = (string) => {
   return string
-    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'");
+    .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&');
 }
 html.use = (callback) => {
   const reserve = html.useContext;
@@ -142,7 +121,7 @@ function css(strings, ...values) {
       const value = typeof strings[key] === "function" ? strings[key](key) : strings[key];
 
       if (typeof value === "number") {
-        string += `${key}: ${value}`;
+        string += `${key}: ${value};`;
       } else if (typeof value === "string") {
         string += `${key}: ${value};`;
       } else if (typeof value === "object") {
