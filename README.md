@@ -39,11 +39,11 @@ xjs components are plain functions that return `html`-tagged templates or accept
 ```js
 import { html } from "xjs";
 
-const Header = html(() => html`
+const Header = () => html`
   <header><h1>${html.useContext("title")}</h1></header>
-`);
+`;
 
-const Layout = html(() => {
+const Layout = () => {
   const { content } = html.useContext();
   return html`
     <html>
@@ -53,7 +53,7 @@ const Layout = html(() => {
       </body>
     </html>
   `;
-});
+};
 
 console.log(html.render(Layout, {
   title: "Home",
