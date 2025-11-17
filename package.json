@@ -1,5 +1,5 @@
 {
-  "name": "xjs",
+  "name": "@gokul-gireesh/xjs"
   "version": "1.0.0",
   "description": "A lightweight JavaScript utility library.",
   "main": "xjs.js",
