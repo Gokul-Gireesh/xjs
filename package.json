@@ -1,0 +1,14 @@
+{
+  "name": "xjs",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript utility library.",
+  "main": "xjs.js",
+  "type": "module",
+  "keywords": ["xjs", "template script", "template engine"],
+  "author": "Gokul Gireesh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gokul-Gireesh/xjs.git"
+  }
+}
