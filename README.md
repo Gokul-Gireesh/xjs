@@ -37,7 +37,7 @@ npm install https://github.com/Gokul-Gireesh/xjs.git
 xjs components are plain functions that return `html`-tagged templates or accept object syntax.
 
 ```js
-import { html } from "xjs";
+import { html } from "@gokul-gireesh/xjs";
 
 const Header = () => html`
   <header><h1>${html.useContext("title")}</h1></header>
@@ -77,7 +77,7 @@ console.log(html.render(Layout, {
 
 ### Object syntax
 ```js
-import { css } from "xjs";
+import { css } from "@gokul-gireesh/xjs";
 
 const styles = css({
   body: {
@@ -189,7 +189,7 @@ If you intentionally want unescaped content, pass HTML via a function/component 
 
 ```js
 import express from "express";
-import { html } from "xjs";
+import { html } from "@gokul-gireesh/xjs";
 
 const app = express();
 

@@ -4,6 +4,9 @@
   "description": "A lightweight JavaScript utility library.",
   "main": "xjs.js",
   "type": "module",
+  "files": [
+    "xjs.js"
+  ],
   "keywords": ["xjs", "template script", "template engine"],
   "author": "Gokul Gireesh",
   "license": "MIT",
